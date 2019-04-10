@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_race"
+        android:icon="@drawable/ic_race"
+        android:title="Races" />
+
+    <item
+        android:id="@+id/navigation_handicap"
+        android:icon="@drawable/ic_handicap"
+        android:title="Handicaps" />
+
+    <item
+        android:id="@+id/navigation_cog"
+        android:icon="@drawable/ic_cog"
+        android:title="COG" />
+
+</menu>

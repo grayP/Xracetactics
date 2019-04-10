@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+        <TextView
+            android:id="@+id/label_view_race"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/race"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+        <TextView
+            android:id="@+id/text_view_race"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/label_view_race"
+            android:maxLines="1"
+
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:text="@string/_1"
+            android:ellipsize="end"
+            />
+
+        <TextView
+            android:id="@+id/label_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label_view_race"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:layout_marginTop="16dp"
+            android:text="@string/rating"
+            />
+
+
+        <TextView
+            android:id="@+id/text_view_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/label_rating"
+            android:layout_alignBottom="@id/label_rating"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:text="@string/_1_1"
+            />
+
+        <TextView
+            android:id="@+id/label_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label_rating"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:layout_marginTop="16dp"
+            android:text="@string/start_time"
+            />
+
+
+        <TextView
+            android:id="@+id/text_view_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/label_start_time"
+            android:layout_alignBottom="@id/label_start_time"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:text="@string/_11_00_00"
+            />
+
+        <!--<androidx.recyclerview.widget.RecyclerView-->
+            <!--android:id="@+id/recycler_races"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--tools:layout_below="@id/label_start_time"-->
+            <!--tools:layout_editor_absoluteY="0dp"-->
+            <!--tools:listitem="@layout/handicap_race_item" />-->
+
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>

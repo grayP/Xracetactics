@@ -32,4 +32,6 @@ public interface HandicapDao {
     @Query("Select * from handicap WHERE Id=:id")
     Handicap getHandicap(int id);
 
+    @Query("Select * from handicap Where race=:raceNum")
+    LiveData<List<Handicap>> gethandicapsForRace(int raceNum);
 }

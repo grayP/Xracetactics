@@ -3,7 +3,7 @@ package au.com.codeflagz.xracetactics.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -72,13 +72,14 @@ public class RaceAdapter extends ListAdapter<Race, RaceAdapter.RaceHolder> {
         private TextView textRace;
         private TextView textRating;
         private TextView textStartTime;
-        private Button buttonEdit;
+        private ImageView imageViewEdit;
 
         public RaceHolder(@NonNull View itemView) {
             super(itemView);
             textRace = itemView.findViewById(R.id.text_view_race);
             textRating = itemView.findViewById(R.id.text_view_rating);
             textStartTime = itemView.findViewById(R.id.text_view_start_time);
+            imageViewEdit=itemView.findViewById(R.id.image_edit_race);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -91,11 +92,23 @@ public class RaceAdapter extends ListAdapter<Race, RaceAdapter.RaceHolder> {
                     }
                 }
             });
+
+            imageViewEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onImageClick(getItem(position));
+                    }
+                }
+            });
         }
     }
 
     public interface onItemClickListener {
         void onItemClick(Race race);
+        void onImageClick(Race race);
+        void onResultImageClick(Race race);
     }
 
     public void setOnItemClickListener(onItemClickListener listener) {

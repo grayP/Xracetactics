@@ -40,6 +40,7 @@ public class HandicapRepository {
     public LiveData<List<Handicap>> getHandicaps(){
         return allHandicaps;
     }
+    public LiveData<List<Handicap>> getHandicapsForRace(int raceNum){return handicapDao.gethandicapsForRace(raceNum);}
 
     private static class insertHandicapAsyncTask extends AsyncTask<Handicap, Void, Void> {
         private HandicapDao handicapDao;

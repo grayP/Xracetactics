@@ -31,31 +31,15 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:text="@string/_1_1"
             />
-        <TextView
-            android:id="@+id/label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/text_view_boat"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:text="@string/delta"
-            />
 
         <TextView
-            android:id="@+id/delta"
+            android:id="@+id/text_delta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/label"
-            android:layout_below="@id/text_view_boat"
+           android:layout_below="@id/text_view_boat"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:text="200"
+            android:textColor="@color/colorAccent"
             />
-
-
-
-
-
     </RelativeLayout>
-
-
-
 </androidx.cardview.widget.CardView>

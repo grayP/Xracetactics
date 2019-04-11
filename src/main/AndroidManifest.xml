@@ -12,26 +12,27 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".activity.RaceDelta"
+            android:label="@string/race_deltas"
+            android:parentActivityName=".activity.ListHandicaps"/>
+        <activity
             android:name=".activity.ListRaces"
-            android:label="@string/title_activity_list_races" >
-        android:launchMode="singleTop">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            android:label="@string/title_activity_list_races"
+            android:launchMode="singleTop" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.AddEditRaceActivity"
             android:parentActivityName=".activity.ListRaces" />
         <activity
             android:name=".activity.AddEditHandicapActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".activity.ListHandicaps" />
         <activity
-            android:name=".MainActivity"
-            android:label="@string/handicaps" >
-
-        </activity>
+            android:name=".activity.ListHandicaps"
+            android:label="@string/handicaps" />
     </application>
 
 </manifest>

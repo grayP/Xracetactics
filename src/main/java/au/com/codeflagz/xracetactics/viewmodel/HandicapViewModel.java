@@ -48,4 +48,6 @@ public class HandicapViewModel extends AndroidViewModel {
     public LiveData<List<Handicap>> getAllHandicaps(){
         return allHandicaps;
     }
+    public LiveData<List<Handicap>> getHandicapsForRace(int raceNum) { return repository.getHandicapsForRace(raceNum);}
+
 }

@@ -17,4 +17,6 @@
     <string name="show_races">Show Races</string>
     <string name="title_activity_list_races">List All Races</string>
     <string name="handicaps">Handicaps</string>
+    <string name="race_deltas">Race Deltas</string>
+    <string name="our_rating">Our Rating:</string>
 </resources>

@@ -1,4 +1,4 @@
-package au.com.codeflagz.xracetactics;
+package au.com.codeflagz.xracetactics.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,8 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import au.com.codeflagz.xracetactics.activity.AddEditHandicapActivity;
-import au.com.codeflagz.xracetactics.activity.ListRaces;
+import au.com.codeflagz.xracetactics.R;
 import au.com.codeflagz.xracetactics.adapter.HandicapAdapter;
 import au.com.codeflagz.xracetactics.model.Handicap;
 import au.com.codeflagz.xracetactics.viewmodel.HandicapViewModel;
@@ -24,7 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class ListHandicaps extends AppCompatActivity {
     public static final int ADD_HANDICAP_REQUEST = 1000;
     public static final int EDIT_HANDICAP_REQUEST = 1001;
 
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         buttonAddHandicap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddEditHandicapActivity.class);
+                Intent intent = new Intent(ListHandicaps.this, AddEditHandicapActivity.class);
                 startActivityForResult(intent, ADD_HANDICAP_REQUEST);
             }
         });
@@ -66,14 +65,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 handicapViewModel.delete(adapter.getHandicapAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(MainActivity.this, "Handicap deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListHandicaps.this, "Handicap deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recycler);
 
         adapter.setOnItemClickListener(new HandicapAdapter.onItemClickListener() {
             @Override
             public void onItemClick(Handicap handicap) {
-                Intent intent = new Intent(MainActivity.this, AddEditHandicapActivity.class);
+                Intent intent = new Intent(ListHandicaps.this, AddEditHandicapActivity.class);
                 intent.putExtra(AddEditHandicapActivity.NEW_ID, handicap.getId());
                 intent.putExtra(AddEditHandicapActivity.NEW_BOAT, handicap.getBoat());
                 intent.putExtra(AddEditHandicapActivity.NEW_RACE, handicap.getRace());
@@ -123,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case (R.id.show_all_races):
-                       Intent intent = new Intent(MainActivity.this, ListRaces.class);
+                       Intent intent = new Intent(ListHandicaps.this, ListRaces.class);
                 startActivity(intent);
                 return true;
             default:

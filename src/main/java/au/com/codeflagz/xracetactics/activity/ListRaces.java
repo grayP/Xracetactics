@@ -21,7 +21,6 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import au.com.codeflagz.xracetactics.MainActivity;
 import au.com.codeflagz.xracetactics.R;
 import au.com.codeflagz.xracetactics.adapter.RaceAdapter;
 import au.com.codeflagz.xracetactics.model.Race;
@@ -78,6 +77,11 @@ public class ListRaces extends AppCompatActivity {
         adapter.setOnItemClickListener(new RaceAdapter.onItemClickListener() {
             @Override
             public void onItemClick(Race race) {
+                ShowRaceDeltas(race);
+            }
+
+            @Override
+            public void onImageClick(Race race) {
                 Intent intent = new Intent(ListRaces.this, AddEditRaceActivity.class);
                 intent.putExtra(AddEditRaceActivity.RACE_ID, race.getId());
                 intent.putExtra(AddEditRaceActivity.RACE_RATING, race.getRating());
@@ -86,7 +90,23 @@ public class ListRaces extends AppCompatActivity {
                 intent.putExtra(AddEditRaceActivity.RACE_STARTMINUTE, race.getStartMinute());
                 startActivityForResult(intent, EDIT_RACE_REQUEST);
             }
+
+            @Override
+            public void onResultImageClick(Race race) {
+                ShowRaceDeltas(race);
+            }
         });
+    }
+
+    private void ShowRaceDeltas(Race race)
+    {
+        Intent intent = new Intent(ListRaces.this, RaceDelta.class);
+        intent.putExtra(AddEditRaceActivity.RACE_ID, race.getId());
+        intent.putExtra(AddEditRaceActivity.RACE_RATING, race.getRating());
+        intent.putExtra(AddEditRaceActivity.RACE_RACE, race.getRace());
+        intent.putExtra(AddEditRaceActivity.RACE_STARTHOUR, race.getStartHour());
+        intent.putExtra(AddEditRaceActivity.RACE_STARTMINUTE, race.getStartMinute());
+        startActivity(intent);
     }
 
     @Override
@@ -103,7 +123,7 @@ public class ListRaces extends AppCompatActivity {
         } else if (requestCode == EDIT_RACE_REQUEST && resultCode == RESULT_OK) {
             int Id = data.getIntExtra(AddEditRaceActivity.RACE_ID, -1);
             if (Id == -1) {
-                Toast.makeText(this, "Note not updated", Toast.LENGTH_SHORT);
+                Toast.makeText(this, "Race not updated", Toast.LENGTH_SHORT);
             }
             int startHour = data.getIntExtra(AddEditRaceActivity.RACE_STARTHOUR, 1);
             int startMinute = data.getIntExtra(AddEditRaceActivity.RACE_STARTMINUTE, 1);
@@ -131,11 +151,12 @@ public class ListRaces extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case (R.id.show_all_handicaps):
-                Intent intent = new Intent(ListRaces.this, MainActivity.class);
+                Intent intent = new Intent(ListRaces.this, ListHandicaps.class);
                 startActivity(intent);
                 return true;
             default:
-                return onOptionsItemSelected(item);
+                return false;
+                        //onOptionsItemSelected(item);
         }
     }
 }

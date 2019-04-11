@@ -41,6 +41,8 @@ public class RaceRepository {
         return allRaces;
     }
 
+
+
     private static class insertRaceAsyncTask extends AsyncTask<Race, Void, Void> {
         private RaceDao raceDao;
 

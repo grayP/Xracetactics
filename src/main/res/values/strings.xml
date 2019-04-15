@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Handicaps</string>
+    <string name="app_name">Handicap Tracker</string>
     <string name="boat">Boat</string>
     <string name="_1_0">1.0</string>
     <string name="race">Race: </string>
@@ -16,7 +16,10 @@
     <string name="show_handicaps">Show Handicaps</string>
     <string name="show_races">Show Races</string>
     <string name="title_activity_list_races">List All Races</string>
-    <string name="handicaps">Handicaps</string>
+    <string name="handicaps">Boats</string>
     <string name="race_deltas">Race Deltas</string>
     <string name="our_rating">Our Rating:</string>
+    <string name="menu_races">Races</string>
+    <string name="menu_boats">Boats</string>
+    <string name="menu_cog_graph">COG Graph</string>
 </resources>

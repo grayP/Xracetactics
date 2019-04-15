@@ -1,5 +1,17 @@
 package au.com.codeflagz.xracetactics.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -11,17 +23,6 @@ import au.com.codeflagz.xracetactics.R;
 import au.com.codeflagz.xracetactics.adapter.HandicapAdapter;
 import au.com.codeflagz.xracetactics.model.Handicap;
 import au.com.codeflagz.xracetactics.viewmodel.HandicapViewModel;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.List;
 
 public class ListHandicaps extends AppCompatActivity {
     public static final int ADD_HANDICAP_REQUEST = 1000;
@@ -62,6 +63,7 @@ public class ListHandicaps extends AppCompatActivity {
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
             }
+
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 handicapViewModel.delete(adapter.getHandicapAt(viewHolder.getAdapterPosition()));
@@ -77,10 +79,11 @@ public class ListHandicaps extends AppCompatActivity {
                 intent.putExtra(AddEditHandicapActivity.NEW_BOAT, handicap.getBoat());
                 intent.putExtra(AddEditHandicapActivity.NEW_RACE, handicap.getRace());
                 intent.putExtra(AddEditHandicapActivity.NEW_RATING, handicap.getRating());
-                startActivityForResult(intent,EDIT_HANDICAP_REQUEST);
+                startActivityForResult(intent, EDIT_HANDICAP_REQUEST);
             }
         });
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -91,9 +94,9 @@ public class ListHandicaps extends AppCompatActivity {
             Handicap handicap = new Handicap(boatName, race, rating);
             handicapViewModel.insert(handicap);
             Toast.makeText(this, "Handicap saved", Toast.LENGTH_SHORT);
-        } else if(requestCode == EDIT_HANDICAP_REQUEST && resultCode == RESULT_OK) {
-            int Id = data.getIntExtra(AddEditHandicapActivity.NEW_ID,-1);
-             if(Id==-1) {
+        } else if (requestCode == EDIT_HANDICAP_REQUEST && resultCode == RESULT_OK) {
+            int Id = data.getIntExtra(AddEditHandicapActivity.NEW_ID, -1);
+            if (Id == -1) {
                 Toast.makeText(this, "Note not updated", Toast.LENGTH_SHORT);
             }
             String boatName = data.getStringExtra(AddEditHandicapActivity.NEW_BOAT);
@@ -105,26 +108,30 @@ public class ListHandicaps extends AppCompatActivity {
             handicapViewModel.update(handicap);
 
             Toast.makeText(this, "Handicap saved", Toast.LENGTH_SHORT);
-        }else
-        {
+        } else {
             Toast.makeText(this, "Handicap not saved", Toast.LENGTH_SHORT);
         }
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflator = getMenuInflater();
         inflator.inflate(R.menu.main_menu, menu);
         return true;
     }
 
-@Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case (R.id.show_all_races):
-                       Intent intent = new Intent(ListHandicaps.this, ListRaces.class);
+                Intent intent = new Intent(ListHandicaps.this, ListRaces.class);
                 startActivity(intent);
                 return true;
+            case (R.id.show_cog_graph):
+                Intent cogIntent = new Intent(ListHandicaps.this, CogGraphActivity.class);
+                startActivity(cogIntent);
+                return true;
+
             default:
                 return onOptionsItemSelected(item);
         }

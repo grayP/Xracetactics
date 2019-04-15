@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="au.com.codeflagz.xracetactics">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,16 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.CogGraphActivity"></activity>
         <activity
             android:name=".activity.RaceDelta"
             android:label="@string/race_deltas"
-            android:parentActivityName=".activity.ListHandicaps"/>
+            android:parentActivityName=".activity.ListHandicaps" />
         <activity
             android:name=".activity.ListRaces"
-            android:label="@string/title_activity_list_races"
-            android:launchMode="singleTop" >
+            android:label="Handicap Calculator"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -33,6 +40,8 @@
         <activity
             android:name=".activity.ListHandicaps"
             android:label="@string/handicaps" />
+        <service android:name=".services.GpsLocationService" />
+
     </application>
 
 </manifest>

@@ -3,10 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/show_all_races"
-        android:title="@string/show_races"
+        android:title="@string/menu_races"
         app:showAsAction="never" />
     <item
         android:id="@+id/show_all_handicaps"
-        android:title="@string/show_handicaps"
+        android:title="@string/menu_boats"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/show_cog_graph"
+        android:title="@string/menu_cog_graph"
         app:showAsAction="never" />
 </menu>

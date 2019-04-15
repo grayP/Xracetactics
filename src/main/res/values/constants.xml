@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fastCog">FastCog</string>
+    <string name="slowCog">SlowCog</string>
+    <string name="fastSog">FastSog</string>
+    <string name="slowSog">SlowSog</string>
+    <string name="numSeconds">NumSeconds</string>
+</resources>

@@ -2,20 +2,18 @@ package au.com.codeflagz.xracetactics.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -24,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import au.com.codeflagz.xracetactics.R;
 import au.com.codeflagz.xracetactics.adapter.RaceAdapter;
 import au.com.codeflagz.xracetactics.model.Race;
+import au.com.codeflagz.xracetactics.viewmodel.CogGraphViewModel;
 import au.com.codeflagz.xracetactics.viewmodel.HandicapViewModel;
 
 public class ListRaces extends AppCompatActivity {
@@ -31,6 +30,7 @@ public class ListRaces extends AppCompatActivity {
     public static final int ADD_RACE_REQUEST = 1002;
     public static final int EDIT_RACE_REQUEST = 1003;
     private HandicapViewModel handicapViewModel;
+    private CogGraphViewModel cogGraphViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class ListRaces extends AppCompatActivity {
         recycler.setAdapter(adapter);
 
         handicapViewModel = ViewModelProviders.of(this).get(HandicapViewModel.class);
+
         handicapViewModel.getAllRaces().observe(this, new Observer<List<Race>>() {
             @Override
             public void onChanged(List<Race> races) {
@@ -153,6 +154,10 @@ public class ListRaces extends AppCompatActivity {
             case (R.id.show_all_handicaps):
                 Intent intent = new Intent(ListRaces.this, ListHandicaps.class);
                 startActivity(intent);
+                return true;
+            case (R.id.show_cog_graph):
+                Intent cogIntent = new Intent(ListRaces.this, CogGraphActivity.class);
+                startActivity(cogIntent);
                 return true;
             default:
                 return false;
